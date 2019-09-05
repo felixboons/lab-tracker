@@ -1,1 +1,19 @@
-<div class="uk-card" *ngFor="let assignment of assignments"></div>
+<div class="uk-container">
+  <div class="uk-grid" uk-grid>
+    <div class="uk-child-width-1-1 uk-width-1-2@m">
+
+      <form class="uk-search uk-search-default uk-margin-bottom">
+        <a href="" class="uk-search-icon-flip" uk-search-icon></a>
+        <input class="uk-search-input" type="search" placeholder="Zoek naar opdracht, klas of student">
+      </form>
+
+      <div *ngFor="let assignment of assignments">
+        <app-assignment [assignment]="assignment"></app-assignment>
+      </div>
+
+    </div>
+    <div class="uk-child-width-1-1 uk-width-1-2@m">
+
+    </div>
+  </div>
+</div>

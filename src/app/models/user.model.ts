@@ -9,11 +9,11 @@ export class User {
   email: string;
   role: Role;
 
-  constructor(uid: string, firstName: string, lastName: string, email: string, role: Role) {
-    this.uid = uid;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.role = role;
+  constructor(input) {
+    this.uid = input.uid;
+    this.firstName = input.firstName;
+    this.lastName = input.lastName;
+    this.email = input.email;
+    this.role = input.role;
   }
 }

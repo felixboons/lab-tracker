@@ -11,7 +11,7 @@ export class AssignmentsComponent implements OnInit {
   assignments: Assignment[] = [];
 
   constructor(private assignmentService: AssignmentService) {
-    this.assignmentService.assignmentObs.subscribe((assignments => {
+    this.assignmentService.getAssignments().subscribe((assignments => {
       this.assignments = assignments;
     }));
   }
@@ -19,5 +19,4 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit() {
 
   }
-
 }

@@ -1,1 +1,24 @@
-<p>assignment works!</p>
+<div class="uk-card uk-card-default uk-card-small uk-margin-bottom clickable">
+  <div class="uk-card-header">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-expand">
+        <h3 class="uk-card-title uk-margin-remove-bottom">{{ assignment.title }}</h3>
+        <p class="uk-text-meta uk-margin-remove-top"
+           *ngIf="!deadlineHasPassed(assignment.deadline); else deadlinePassed">
+          Deadline is verlopen op {{ parseDate(assignment.deadline) }}.
+        </p>
+        <ng-template #deadlinePassed>
+          <p class="uk-text-meta uk-margin-remove-top">
+            In te leveren voor {{ parseDate(assignment.deadline) }}.
+          </p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="uk-card-body uk-padding-remove-top" *ngIf="assignment.finishedStudents">
+    <div class="uk-inline">
+      <span class="uk-label uk-label-success uk-margin-small-right">1 INGELEVERD</span>
+      <span class="uk-label uk-label-muted">91 OPENSTAAND</span>
+    </div>
+  </div>
+</div>

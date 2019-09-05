@@ -1,2 +1,10 @@
 $color-primary: #ee832d;
 $color-secondary: #999;
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+  }
+}
