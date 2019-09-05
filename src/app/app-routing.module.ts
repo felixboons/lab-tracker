@@ -10,9 +10,7 @@ import {StudentsComponent} from './components/students/students.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'opdrachten', component: AssignmentsComponent },
-  { path: 'opdrachten/uid', component: AssignmentComponent },
   { path: 'studenten', component: StudentComponent },
-  { path: 'studenten/uid', component: StudentsComponent },
 ];
 
 @NgModule({

@@ -1,1 +1,22 @@
-<p>assignment-details works!</p>
+<h3 class="uk-margin-remove-bottom">{{ assignment.title }}</h3>
+<p class="uk-text-meta uk-margin-remove-top"
+   *ngIf="!deadlineHasPassed(assignment.deadline); else deadlinePassed">
+  Deadline is verlopen op {{ parseDate(assignment.deadline) }}.
+</p>
+<ng-template #deadlinePassed>
+  <p class="uk-text-meta uk-margin-remove-top">
+    In te leveren voor {{ parseDate(assignment.deadline) }}.
+  </p>
+</ng-template>
+
+<div class="uk-padding-remove-top">
+  <span *ngIf="assignment.finishedStudents; else noSubmissions" class="uk-label uk-label-success uk-margin-small-right">{{ assignment.finishedStudents.length }} INGELEVERD</span>
+  <ng-template #noSubmissions>
+    <span class="uk-label uk-label-muted uk-margin-small-right">Nog niets ingeleverd</span>
+  </ng-template>
+</div>
+
+<h4 *ngIf="assignment.finishedStudents">Ingeleverd door:</h4>
+<ul>
+  <li *ngFor="let user of assignment.finishedStudents">{{ user.firstName }} {{ user.lastName }}</li>
+</ul>

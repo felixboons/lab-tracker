@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Assignment} from '../../../models/assignment.model';
 import * as moment from 'moment';
-import {Action} from '../assignments.component';
 
 @Component({
   selector: 'app-assignment',
@@ -9,20 +8,25 @@ import {Action} from '../assignments.component';
   styleUrls: ['./assignment.component.scss']
 })
 export class AssignmentComponent implements OnInit {
-  @Input() action: Action;
+  @Output() assignmentSelected = new EventEmitter<number>();
   @Input() assignment: Assignment = null;
+  @Input() index: number;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  viewAssignment(): void {
+    this.assignmentSelected.emit(this.index);
+  }
+
   parseDate(date: Date): string {
-    return moment(date, 'ddd LT').toString();
+    moment.locale('nl');
+    return moment(date).format('LLLL');
   }
 
   deadlineHasPassed(date: Date): boolean {
     return moment(date).isAfter(new Date());
   }
-
 }

@@ -5,16 +5,18 @@
     <div class="uk-child-width-1-1 uk-width-1-2@m">
       <form class="uk-search uk-search-default uk-margin-bottom uk-width-expand">
         <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-        <input class="uk-search-input" type="search" placeholder="Zoek naar opdracht, docent of klas">
+        <input class="uk-search-input" type="search" placeholder="Zoek naar naam van opdracht, vak of klas"
+               [ngModel]="searchQuery" name="searchValue" (ngModelChange)="searchQuery = $event">
       </form>
 
-      <div *ngFor="let assignment of assignments" class="uk-margin-bottom">
-        <app-assignment [assignment]="assignment" [action]="action"></app-assignment>
+      <div *ngFor="let assignment of assignments; let i = index" class="uk-margin-bottom">
+        <app-assignment [assignment]="assignment" [index]="i" (assignmentSelected)="setAssignment($event)"></app-assignment>
       </div>
     </div>
 
     <div class="uk-child-width-1-1 uk-width-1-2@m">
-      <app-create-assignment></app-create-assignment>
+      <app-assignment-details *ngIf="currentAssignment" [assignment]="currentAssignment"></app-assignment-details>
+      <app-create-assignment *ngIf="!currentAssignment && creating"></app-create-assignment>
     </div>
   </div>
 </div>

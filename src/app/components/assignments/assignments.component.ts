@@ -1,10 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AssignmentService} from '../../services/assignment.service';
 import {Assignment} from '../../models/assignment.model';
-
-export enum Action {
-  VIEW, CREATE
-}
 
 @Component({
   selector: 'app-assignments',
@@ -12,8 +8,10 @@ export enum Action {
   styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent implements OnInit {
-  action: Action = Action.VIEW;
   assignments: Assignment[] = [];
+  currentAssignment: Assignment = null;
+  creating = false;
+  searchQuery: string = null;
 
   constructor(private assignmentService: AssignmentService) {
     this.assignmentService.getAssignments().subscribe((assignments => {
@@ -22,6 +20,28 @@ export class AssignmentsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
 
+  setAssignment(index: number) {
+    this.currentAssignment = this.assignments[index];
+  }
+
+  startCreating(): void {
+    this.creating = true;
+  }
+
+  cancelCreation(): void {
+    this.creating = false;
+  }
+
+  filterAssignments(title: string): void {
+    this.assignmentService.getAssignmentsByTitle(title).subscribe((assignments) => {
+      this.assignments = assignments;
+    })
+  }
+
+  searchAssignments() {
+    console.log(this.searchQuery);
+    this.assignmentService.getAssignmentsByTitle(this.searchQuery);
   }
 }

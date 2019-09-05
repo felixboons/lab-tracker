@@ -1,7 +1,7 @@
 import {User} from './user.model';
 
 export class Assignment {
-  uid: string;
+  key: string;
   title: string;
   deadline: Date;
   finishedStudents: User[];

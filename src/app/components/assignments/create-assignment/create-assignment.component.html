@@ -1,8 +1,11 @@
 <h3 class="">Nieuwe opdracht toevoegen</h3>
 
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <input type="text" class="uk-input uk-margin-small-bottom" placeholder="Titel">
-  <input type="datetime-local" class="uk-input uk-margin-small-bottom" placeholder="Deadline">
+  <input type="text" class="uk-input uk-margin-small-bottom" placeholder="Titel"
+          formControlName="title">
+  <input type="datetime-local" class="uk-input uk-margin-small-bottom" placeholder="Deadline"
+         formControlName="deadline" id="datepicker">
 
-  <button class="uk-button uk-button-primary">Opdracht toevoegen</button>
+  <button class="uk-button uk-button-default uk-width-1-3" (click)="cancel()">Annuleren</button>
+  <button class="uk-button uk-button-primary uk-width-2-3">Opdracht toevoegen</button>
 </form>

@@ -19,8 +19,22 @@ export class AssignmentService {
     }));
   }
 
-  getAssignments(): any {
-    return this.assignmentObs;
+  getAssignments() {
+    return this.assignmentRef.snapshotChanges().pipe(map(changes => {
+      return changes
+        .map(c => ({key: c.payload.key, ...c.payload.val()}))
+        .sort((a, b) => -1);
+    }));
+  }
+
+  getAssignmentsByTitle(title: string) {
+    return this.assignmentRef.snapshotChanges().pipe(map(changes => {
+    return changes
+      .map(c => ({key: c.payload.key, ...c.payload.val()}))
+      .filter(c => console.log(c))
+      .sort((a, b) => -1
+      );
+    }));
   }
 
   createAssignment(input: any): Promise<string> {
