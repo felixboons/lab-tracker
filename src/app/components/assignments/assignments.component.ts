@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AssignmentService} from '../../services/assignment.service';
 import {Assignment} from '../../models/assignment.model';
+
+export enum Action {
+  VIEW, CREATE
+}
 
 @Component({
   selector: 'app-assignments',
@@ -8,6 +12,7 @@ import {Assignment} from '../../models/assignment.model';
   styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent implements OnInit {
+  action: Action = Action.VIEW;
   assignments: Assignment[] = [];
 
   constructor(private assignmentService: AssignmentService) {

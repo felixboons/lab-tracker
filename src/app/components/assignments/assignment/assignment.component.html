@@ -15,10 +15,10 @@
       </div>
     </div>
   </div>
-  <div class="uk-card-body uk-padding-remove-top" *ngIf="assignment.finishedStudents">
-    <div class="uk-inline">
-      <span class="uk-label uk-label-success uk-margin-small-right">1 INGELEVERD</span>
-      <span class="uk-label uk-label-muted">91 OPENSTAAND</span>
-    </div>
+  <div class="uk-card-body uk-padding-remove-top">
+    <span *ngIf="assignment.finishedStudents; else noSubmissions" class="uk-label uk-label-success uk-margin-small-right">{{ assignment.finishedStudents.length }} INGELEVERD</span>
+    <ng-template #noSubmissions>
+      <span class="uk-label uk-label-muted uk-margin-small-right">Nog niets ingeleverd</span>
+      </ng-template>
   </div>
 </div>

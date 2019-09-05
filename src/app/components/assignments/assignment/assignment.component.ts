@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Assignment} from '../../../models/assignment.model';
 import * as moment from 'moment';
+import {Action} from '../assignments.component';
 
 @Component({
   selector: 'app-assignment',
@@ -8,6 +9,7 @@ import * as moment from 'moment';
   styleUrls: ['./assignment.component.scss']
 })
 export class AssignmentComponent implements OnInit {
+  @Input() action: Action;
   @Input() assignment: Assignment = null;
 
   constructor() { }

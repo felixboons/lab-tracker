@@ -1,19 +1,20 @@
 <div class="uk-container">
-  <div class="uk-grid" uk-grid>
-    <div class="uk-child-width-1-1 uk-width-1-2@m">
+  <h2 class="uk-heading-divider uk-margin-medium-bottom">Opdrachten</h2>
 
-      <form class="uk-search uk-search-default uk-margin-bottom">
+  <div class="uk-grid uk-grid-large uk-margin-small-top">
+    <div class="uk-child-width-1-1 uk-width-1-2@m">
+      <form class="uk-search uk-search-default uk-margin-bottom uk-width-expand">
         <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-        <input class="uk-search-input" type="search" placeholder="Zoek naar opdracht, klas of student">
+        <input class="uk-search-input" type="search" placeholder="Zoek naar opdracht, docent of klas">
       </form>
 
-      <div *ngFor="let assignment of assignments">
-        <app-assignment [assignment]="assignment"></app-assignment>
+      <div *ngFor="let assignment of assignments" class="uk-margin-bottom">
+        <app-assignment [assignment]="assignment" [action]="action"></app-assignment>
       </div>
-
     </div>
-    <div class="uk-child-width-1-1 uk-width-1-2@m">
 
+    <div class="uk-child-width-1-1 uk-width-1-2@m">
+      <app-create-assignment></app-create-assignment>
     </div>
   </div>
 </div>

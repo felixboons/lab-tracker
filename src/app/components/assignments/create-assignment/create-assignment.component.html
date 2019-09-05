@@ -1,1 +1,8 @@
-<p>create-assignment works!</p>
+<h3 class="">Nieuwe opdracht toevoegen</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input type="text" class="uk-input uk-margin-small-bottom" placeholder="Titel">
+  <input type="datetime-local" class="uk-input uk-margin-small-bottom" placeholder="Deadline">
+
+  <button class="uk-button uk-button-primary">Opdracht toevoegen</button>
+</form>

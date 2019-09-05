@@ -6,6 +6,9 @@
 // Card
 $card-primary-background: $color-primary;
 $card-secondary-background: $color-secondary;
+.uk-card-header {
+  border-bottom: none !important;
+}
 
 // Label
 $label-success-background: $color-primary;
@@ -14,6 +17,9 @@ $label-success-background: $color-primary;
   color: black !important;
   border-color: $color-secondary !important;
 }
+
+// Button
+$button-primary-background: $color-primary;
 
 // 2. Import default variables and available mixins.
 @import "../node_modules/uikit/src/scss/variables-theme.scss";
@@ -24,3 +30,4 @@ $label-success-background: $color-primary;
 
 // 4. Import UIkit.
 @import "../node_modules/uikit/src/scss/uikit-theme.scss";
+
