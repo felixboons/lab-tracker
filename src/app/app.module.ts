@@ -3,14 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AssignmentsComponent } from './components/assignments/assignments.component';
+import { CreateAssignmentComponent } from './components/assignments/create-assignment/create-assignment.component';
+import { AssignmentComponent } from './components/assignments/assignment/assignment.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { StudentsComponent } from './components/students/students.component';
+import { StudentComponent } from './components/students/student/student.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AssignmentsComponent,
+    CreateAssignmentComponent,
+    AssignmentComponent,
+    HomeComponent,
+    NavbarComponent,
+    StudentsComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'art-client'),
+    AngularFireDatabaseModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
